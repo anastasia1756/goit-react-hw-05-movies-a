@@ -1,5 +1,5 @@
 import { useGetMovieById } from "hooks";
-
+import { Text } from "./Reviews.styled";
 export const Reviews = () => {
   const { reviews } = useGetMovieById();
   return (
@@ -9,7 +9,9 @@ export const Reviews = () => {
           {reviews.map(({ id, author, content }) => (
             <li key={id}>
               Author: {author}
-              <p>{content}</p>
+              <hr />
+              <Text>{content}</Text>
+              <hr />
             </li>
           ))}
         </ul>

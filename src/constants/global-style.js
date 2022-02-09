@@ -11,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
   -moz-osx-font-smoothing: grayscale;
   font-weight: 400;
   font-size: 20px;
-  line-height: 2;
+  line-height: 1.5;
   }
   html {
   scroll-behavior: smooth;

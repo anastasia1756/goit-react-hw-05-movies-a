@@ -118,31 +118,35 @@ export const Cast = () => {
   // );
   return (
     <Box>
-      <ul>
-        {cast.map(({ id, profile_path, name, character, gender }) => (
-          <Card key={id}>
-            <ImgBx>
-              <Img
-                src={
-                  profile_path
-                    ? `${base_url}${profile_path}`
-                    : gender === 1
-                    ? imageWoman
-                    : imageMan
-                }
-                alt={name}
-              />
-            </ImgBx>
-            <Details>
-              <Title>
-                {name}
-                <br />
-                <Desc>Character: {character}</Desc>
-              </Title>
-            </Details>
-          </Card>
-        ))}
-      </ul>
+      {cast.length !== 0 ? (
+        <ul>
+          {cast.map(({ id, profile_path, name, character, gender }) => (
+            <Card key={id}>
+              <ImgBx>
+                <Img
+                  src={
+                    profile_path
+                      ? `${base_url}${profile_path}`
+                      : gender === 1
+                      ? imageWoman
+                      : imageMan
+                  }
+                  alt={name}
+                />
+              </ImgBx>
+              <Details>
+                <Title>
+                  {name}
+                  <br />
+                  <Desc>Character: {character}</Desc>
+                </Title>
+              </Details>
+            </Card>
+          ))}
+        </ul>
+      ) : (
+        "We don't have information about cast for this movie"
+      )}
     </Box>
   );
 };

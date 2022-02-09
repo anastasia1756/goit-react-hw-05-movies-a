@@ -12,7 +12,7 @@ ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <BrowserRouter basename="/goit-react-hw-05-movies-a/">
+      <BrowserRouter>
         <App />
       </BrowserRouter>
     </ThemeProvider>

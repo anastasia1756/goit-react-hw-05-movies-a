@@ -13,9 +13,22 @@ const gradient = keyframes`
     background-position: 0% 50%;
   }
 `;
+
+const glow = keyframes`
+  0% {
+  border-color: ${(props) => props.theme.colors.blue};
+  box-shadow: 0 0 5px #00b7ff33, inset 0 0 5px #001aff19, 0 2px 0 #000;
+  }	
+  100% {
+  border-color: ${(props) => props.theme.colors.lightBlue};
+  box-shadow: 0 0 20px #00eeff99, inset 0 0 10px #0066ff66, 0 2px 0 #000;
+  }
+`;
+
 export const Link = styled(NavLink)`
   display: flex;
   align-items: center;
+  gap: ${(props) => props.theme.spacing(2)};
   color: #f1e2f2;
   &.active {
     color: ${(props) => props.theme.colors.pink};
@@ -32,4 +45,29 @@ export const Wrapper = styled.div`
 `;
 export const Icon = styled(MdLocalMovies)`
   margin-right: ${(props) => props.theme.spacing(2)};
+`;
+export const Form = styled.form`
+  position: relative;
+  margin-bottom: ${(props) => props.theme.spacing(1)};
+`;
+export const Input = styled.input`
+  animation: ${glow} 800ms ease-out infinite alternate;
+  border-radius: 10px;
+  color: ${(props) => props.theme.colors.white};
+  background: ${(props) => props.theme.colors.rgbPink};
+  padding: ${(props) => props.theme.spacing(2)};
+`;
+export const Button = styled.button`
+  background-color: transparent;
+  border-radius: 50%;
+  border: none;
+  position: absolute;
+  top: 33%;
+  left: 14%;
+  cursor: pointer;
+
+  &:hover {
+    transform: rotate(20deg) scale(1.2);
+    background-color: ${(props) => props.theme.colors.purple};
+  }
 `;

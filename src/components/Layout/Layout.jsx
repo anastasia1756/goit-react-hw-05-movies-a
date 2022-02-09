@@ -32,7 +32,7 @@ export const Layout = () => {
           bg={{
             position: "absolute",
             zIndex: -1,
-            height: 1200,
+            height: 2020,
           }}
         />
       )}

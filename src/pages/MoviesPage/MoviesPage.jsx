@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { Link, Wrapper } from "./MoviesPage.styled";
+import { Link, Wrapper, Input, Button, Form } from "./MoviesPage.styled";
 import { useNavigate, useLocation, useSearchParams } from "react-router-dom";
 import { getSearchedMovie } from "services";
 import { Loader } from "components/Loader";
 import toast, { Toaster } from "react-hot-toast";
 import { MdLocalMovies } from "react-icons/md";
+import { FcSearch } from "react-icons/fc";
 
 // import bg from "assets/bg.jpg";
 export const MoviesPage = () => {
@@ -53,25 +54,26 @@ export const MoviesPage = () => {
 
   return (
     <Wrapper>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Input
           {...register("query", {
             required: true,
           })}
           placeholder="Type any movie"
         />
-        <button type="submit">Search</button>
-      </form>
+        <Button type="submit">
+          <FcSearch />
+        </Button>
+      </Form>
       {loading && <Loader />}
       {movies && (
         <>
           <div>
             {movies.map(({ id, title }) => (
-              <div>
+              <div key={id}>
                 <Link
                   to={`/movies/${id}`}
                   state={{ from: { location, label: "Back to movies" } }}
-                  key={id}
                 >
                   <MdLocalMovies />
                   {title}
