@@ -1,51 +1,87 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
-import { getSearchedMovie } from "../../services";
-import { MovieDetailsPage } from "../../components/MovieDetailsPage";
+import { useForm } from "react-hook-form";
+import { Link, Wrapper } from "./MoviesPage.styled";
+import { useNavigate, useLocation, useSearchParams } from "react-router-dom";
+import { getSearchedMovie } from "services";
+import { Loader } from "components/Loader";
+import toast, { Toaster } from "react-hot-toast";
+import { MdLocalMovies } from "react-icons/md";
+
+// import bg from "assets/bg.jpg";
 export const MoviesPage = () => {
+  const { register, handleSubmit, resetField } = useForm();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [value, setValue] = useState("");
-
-  //   useEffect(() => {
-  //     async function fetchMovie() {
-  //       setLoading(true);
-  //       try {
-  //         const query = await getSearchedMovie(value);
-  //         setValue(value);
-  //       } catch (error) {
-  //         setError(error);
-  //       } finally {
-  //         setLoading(false);
-  //       }
-  //     }
-  //     fetchMovie();
-  //   }, [value]);
+  const [movies, setMovies] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get("query");
 
   const location = useLocation();
-  let navigate = useNavigate();
-  const queryString = require("query-string");
+  const navigate = useNavigate();
+  useEffect(() => {
+    async function fetchMovie() {
+      setLoading(true);
+      try {
+        if (!query) {
+          return;
+        }
+        const searchedQuery = await getSearchedMovie(query);
+        setMovies(searchedQuery);
+        if (searchedQuery.length === 0) {
+          toast.error("There is no movie with this title");
+          return;
+        }
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchMovie();
+  }, [query]);
 
-  const parsed = queryString.parse(location.search);
-  console.log(parsed);
+  const onSubmit = (data) => {
+    setSearchParams(data.query);
 
-  const handleChange = (e) => {
-    setValue(e.target.value);
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
     navigate({
       pathname: location.pathname,
-      search: `query=${value}`,
+      search: `query=${data.query}`,
     });
-    setValue("");
+
+    resetField("query");
   };
+
   return (
-    <div>
-      <input type="text" value={value} onChange={handleChange} />
-      <button type="button" onClick={handleSubmit}>
-        Search
-      </button>
-    </div>
+    <Wrapper>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <input
+          {...register("query", {
+            required: true,
+          })}
+          placeholder="Type any movie"
+        />
+        <button type="submit">Search</button>
+      </form>
+      {loading && <Loader />}
+      {movies && (
+        <>
+          <div>
+            {movies.map(({ id, title }) => (
+              <div>
+                <Link
+                  to={`/movies/${id}`}
+                  state={{ from: { location, label: "Back to movies" } }}
+                  key={id}
+                >
+                  <MdLocalMovies />
+                  {title}
+                </Link>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+      <Toaster />
+    </Wrapper>
   );
 };

@@ -1,18 +1,21 @@
-import { useGetMovieById } from "../../hooks";
+import { useGetMovieById } from "hooks";
 
 export const Reviews = () => {
-  const { movie, loading, error, cast, reviews } = useGetMovieById();
-  console.log(reviews);
+  const { reviews } = useGetMovieById();
   return (
     <div>
-      <ul>
-        {reviews.map((review) => (
-          <li key={review.id}>
-            Author: {review.author}
-            <p>{review.content}</p>
-          </li>
-        ))}
-      </ul>
+      {reviews.length !== 0 ? (
+        <ul>
+          {reviews.map(({ id, author, content }) => (
+            <li key={id}>
+              Author: {author}
+              <p>{content}</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        "There is no review yet. Be the first one to add review to this movie!"
+      )}
     </div>
   );
 };

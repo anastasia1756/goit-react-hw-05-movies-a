@@ -1,11 +1,13 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Layout } from "../Layout";
-import { HomePage, MoviesPage } from "../../pages";
-import { MovieDetailsPage } from "components/MovieDetailsPage";
 import { Cast } from "components/Cast";
 import { Reviews } from "components/Reviews";
-
+import { useLazyLoader } from "hooks";
 export const App = () => {
+  const HomePage = useLazyLoader("HomePage");
+  const MoviesPage = useLazyLoader("MoviesPage");
+  const MovieDetailsPage = useLazyLoader("MovieDetailsPage");
+
   return (
     <>
       <Routes>
@@ -18,14 +20,7 @@ export const App = () => {
           </Route>
         </Route>
 
-        <Route
-          path="*"
-          element={
-            <main style={{ padding: "1rem" }}>
-              <p>There's nothing here!</p>
-            </main>
-          }
-        />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
   );

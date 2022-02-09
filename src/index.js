@@ -1,15 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { ThemeProvider } from "styled-components";
 import { App } from "components/App";
 import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
+import { GlobalStyle, theme } from "constants/index";
+
 import "./index.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter basename="/goit-react-hw-05-movies-a/">
-      <App />
-    </BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <BrowserRouter basename="/goit-react-hw-05-movies-a/">
+        <App />
+      </BrowserRouter>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
