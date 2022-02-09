@@ -8,7 +8,6 @@ import toast, { Toaster } from "react-hot-toast";
 import { MdLocalMovies } from "react-icons/md";
 import { FcSearch } from "react-icons/fc";
 
-// import bg from "assets/bg.jpg";
 export const MoviesPage = () => {
   const { register, handleSubmit, resetField } = useForm();
   const [loading, setLoading] = useState(false);

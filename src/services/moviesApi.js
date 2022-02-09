@@ -20,6 +20,3 @@ export const getSearchedMovie = async (movie) => {
   );
   return response.data.results;
 };
-// https://api.themoviedb.org/3/movie/{movie_id}?api_key=<<api_key>>&language=en-US
-// https://api.themoviedb.org/3/genre/movie/list?api_key=<<api_key>>&language=en-US
-// https://api.themoviedb.org/3/search/movie?api_key=<<api_key>>&language=en-US&page=1&include_adult=false

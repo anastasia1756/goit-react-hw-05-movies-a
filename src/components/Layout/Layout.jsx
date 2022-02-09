@@ -1,26 +1,10 @@
-import { Outlet, NavLink, useLocation } from "react-router-dom";
-import styled from "styled-components";
+import { Outlet, useLocation } from "react-router-dom";
+import { Link, Wrapper, Header } from "./Layout.styled";
 
 import { Suspense } from "react";
 import { Loader } from "../Loader";
 import ParticlesBg from "particles-bg";
-const Link = styled(NavLink)`
-  margin-right: 10px;
-  text-decoration: none;
-  font-weight: bold;
-  color: #331333;
-  &.active {
-    color: #aa27aa;
-  }
-`;
-const Wrapper = styled.div`
-  padding: 12px;
-`;
-const Header = styled.div`
-  background-color: #7f26867d;
-  margin: -12px;
-  padding: ${(props) => props.theme.spacing(3)};
-`;
+
 export const Layout = () => {
   const location = useLocation();
 

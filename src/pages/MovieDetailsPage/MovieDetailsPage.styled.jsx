@@ -6,7 +6,7 @@ const pulse = keyframes`
 export const Link = styled(NavLink)`
   margin-right: 10px;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: bold #530766b5;
   color: ${(props) => props.theme.colors.purple};
   transition: color ${(props) => props.theme.animation} ease;
   &.active {
@@ -56,8 +56,10 @@ export const InfoWrapper = styled.div`
 `;
 export const Overview = styled.p`
   font-size: ${(props) => props.theme.spacing(3)};
+  font-style: italic;
 `;
 export const Info = styled.div`
   text-align: center;
   font-weight: 700;
+  color: ${(props) => props.theme.colors.darkPurple};
 `;
