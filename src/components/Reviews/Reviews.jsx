@@ -1,5 +1,5 @@
 import { useGetMovieById } from "hooks";
-import { Text } from "./Reviews.styled";
+import { Text, Author } from "./Reviews.styled";
 import PropTypes from "prop-types";
 
 export const Reviews = () => {
@@ -10,7 +10,7 @@ export const Reviews = () => {
         <ul>
           {reviews.map(({ id, author, content }) => (
             <li key={id}>
-              Author: {author}
+              <Author>Author:</Author> {author}
               <hr />
               <Text>{content}</Text>
               <hr />

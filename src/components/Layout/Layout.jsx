@@ -16,7 +16,7 @@ export const Layout = () => {
           bg={{
             position: "absolute",
             zIndex: -1,
-            height: 2020,
+            height: 2000,
           }}
         />
       )}

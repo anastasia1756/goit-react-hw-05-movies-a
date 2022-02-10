@@ -27,13 +27,34 @@ export const CardWrapper = styled.div`
   display: flex;
   padding: 15px 0;
   border: 2px solid black;
+
+  @media (max-width: 768px) {
+    display: block;
+    max-width: 320px;
+  }
 `;
 export const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin: 25px;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
 `;
 export const Overview = styled.p`
   font-size: ${(props) => props.theme.spacing(3)};
+  font-style: italic;
+`;
+
+export const About = styled.p`
+  font-weight: 700;
+`;
+export const Genres = styled.div`
+  font-weight: 700;
+`;
+export const Votes = styled.span`
+  color: ${(props) => props.theme.colors.darkPurple};
+  font-weight: 700;
   font-style: italic;
 `;

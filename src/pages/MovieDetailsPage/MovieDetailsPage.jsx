@@ -6,12 +6,17 @@ import {
   InfoWrapper,
   GenresList,
   Overview,
+  About,
+  Genres,
+  Votes,
 } from "./MovieDetailsPage.styled";
 import PropTypes from "prop-types";
 import { Info } from "components/Info";
 import { Loader } from "components/Loader";
 import { TiArrowBack } from "react-icons/ti";
 import noMovie from "assets/no-movie.png";
+import ReactTypingEffect from "react-typing-effect";
+
 export const MovieDetailsPage = () => {
   const {
     movie: { release_date, poster_path, title, vote_average, overview, id },
@@ -43,12 +48,22 @@ export const MovieDetailsPage = () => {
             <h2>
               {title}({year})
             </h2>
-            <p>User score: {vote_average * 10}%</p>
-            <p>Overview:</p>
-            <Overview>{overview}</Overview>
+            <p>
+              User score: <Votes>{vote_average * 10}%</Votes>
+            </p>
+            <About>Overview:</About>
+
+            <Overview>
+              {" "}
+              <ReactTypingEffect
+                typingDelay={1000}
+                speed={20}
+                text={overview}
+              />
+            </Overview>
             {genres.length !== 0 && (
               <>
-                <div>Genres:</div>
+                <Genres>Genres:</Genres>
                 <GenresList>
                   {genres.map(({ id, name }) => (
                     <li key={id}>{name}</li>
