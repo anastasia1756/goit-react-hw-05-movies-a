@@ -42,7 +42,7 @@ export const InfoWrapper = styled.div`
     display: block;
   }
 `;
-export const Overview = styled.p`
+export const Overview = styled.div`
   font-size: ${(props) => props.theme.spacing(3)};
   font-style: italic;
 `;

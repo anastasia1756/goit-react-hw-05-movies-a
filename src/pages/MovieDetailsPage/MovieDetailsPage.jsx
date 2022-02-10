@@ -54,7 +54,6 @@ export const MovieDetailsPage = () => {
             <About>Overview:</About>
 
             <Overview>
-              {" "}
               <ReactTypingEffect
                 typingDelay={1000}
                 speed={20}
