@@ -10,38 +10,34 @@ export const Cast = () => {
   const castInfo = cast.length !== 0;
   return (
     <Box>
-      {castInfo && (
-        <>
-          {castInfo ? (
-            <ul>
-              {cast.map(({ id, profile_path, name, character, gender }) => (
-                <Card key={id}>
-                  <ImgBx>
-                    <Img
-                      src={
-                        profile_path
-                          ? `${base_url}${profile_path}`
-                          : gender === 1
-                          ? imageWoman
-                          : imageMan
-                      }
-                      alt={name}
-                    />
-                  </ImgBx>
-                  <Details>
-                    <Title>
-                      {name}
-                      <br />
-                      <Desc>Character: {character}</Desc>
-                    </Title>
-                  </Details>
-                </Card>
-              ))}
-            </ul>
-          ) : (
-            "We don't have information about cast for this movie"
-          )}
-        </>
+      {castInfo ? (
+        <ul>
+          {cast.map(({ id, profile_path, name, character, gender }) => (
+            <Card key={id}>
+              <ImgBx>
+                <ImgBx
+                  src={
+                    profile_path
+                      ? `${base_url}${profile_path}`
+                      : gender === 1
+                      ? imageWoman
+                      : imageMan
+                  }
+                  alt={name}
+                />
+              </ImgBx>
+              <Details>
+                <Title>
+                  {name}
+                  <br />
+                  <Desc>Character: {character}</Desc>
+                </Title>
+              </Details>
+            </Card>
+          ))}
+        </ul>
+      ) : (
+        "We don't have information about cast for this movie"
       )}
     </Box>
   );

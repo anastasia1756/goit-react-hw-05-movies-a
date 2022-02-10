@@ -31,6 +31,7 @@ export const CardWrapper = styled.div`
   @media (max-width: 768px) {
     display: block;
     max-width: 320px;
+    margin: 0 auto;
   }
 `;
 export const InfoWrapper = styled.div`

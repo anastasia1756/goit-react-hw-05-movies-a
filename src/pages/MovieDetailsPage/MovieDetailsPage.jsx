@@ -53,13 +53,15 @@ export const MovieDetailsPage = () => {
             </p>
             <About>Overview:</About>
 
-            <Overview>
-              <ReactTypingEffect
-                typingDelay={1000}
-                speed={20}
-                text={overview}
-              />
-            </Overview>
+            {overview && (
+              <Overview>
+                <ReactTypingEffect
+                  typingDelay={1000}
+                  speed={20}
+                  text={overview}
+                />
+              </Overview>
+            )}
             {genres.length !== 0 && (
               <>
                 <Genres>Genres:</Genres>

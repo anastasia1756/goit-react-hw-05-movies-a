@@ -4,9 +4,10 @@ import PropTypes from "prop-types";
 
 export const Reviews = () => {
   const { reviews } = useGetMovieById();
+  const reviewsInfo = reviews.length !== 0;
   return (
     <div>
-      {reviews.length !== 0 ? (
+      {reviewsInfo ? (
         <ul>
           {reviews.map(({ id, author, content }) => (
             <li key={id}>
