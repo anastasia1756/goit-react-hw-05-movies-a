@@ -15,6 +15,7 @@ import { Loader } from "components/Loader";
 import toast, { Toaster } from "react-hot-toast";
 import { MdLocalMovies } from "react-icons/md";
 import { FcSearch } from "react-icons/fc";
+import PropTypes from "prop-types";
 
 export const MoviesPage = () => {
   const { register, handleSubmit, resetField } = useForm();
@@ -39,7 +40,9 @@ export const MoviesPage = () => {
         const searchedQuery = await getSearchedMovie(query);
         setMovies(searchedQuery);
         if (searchedQuery.length === 0) {
-          toast.error("There is no movie with this title");
+          toast("There is no movie with this title", {
+            icon: "🙅‍♀️",
+          });
           return;
         }
       } catch (error) {
@@ -101,4 +104,14 @@ export const MoviesPage = () => {
       <Toaster />
     </Wrapper>
   );
+};
+
+MoviesPage.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      poster_path: PropTypes.string,
+      title: PropTypes.string.isRequired,
+    })
+  ),
 };

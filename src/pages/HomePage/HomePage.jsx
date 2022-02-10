@@ -1,7 +1,7 @@
 import { useFetchMovies } from "hooks";
 import { FaGratipay } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
+import PropTypes from "prop-types";
 import {
   Title,
   List,
@@ -38,4 +38,14 @@ export const HomePage = () => {
       </List>
     </>
   );
+};
+
+HomePage.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      poster_path: PropTypes.string,
+      title: PropTypes.string.isRequired,
+    })
+  ),
 };

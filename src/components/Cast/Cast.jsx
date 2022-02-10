@@ -2,6 +2,7 @@ import { useGetMovieById } from "hooks";
 import imageWoman from "assets/woman.png";
 import imageMan from "assets/man.png";
 import { Box, Card, ImgBx, Img, Details, Title, Desc } from "./Cast.styled";
+import PropTypes from "prop-types";
 
 export const Cast = () => {
   const { cast } = useGetMovieById();
@@ -40,4 +41,16 @@ export const Cast = () => {
       )}
     </Box>
   );
+};
+
+Cast.propTypes = {
+  cast: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      profile_path: PropTypes.string,
+      name: PropTypes.string.isRequired,
+      character: PropTypes.string.isRequired,
+      gender: PropTypes.number,
+    })
+  ),
 };

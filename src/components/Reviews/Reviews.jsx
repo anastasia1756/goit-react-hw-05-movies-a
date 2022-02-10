@@ -1,5 +1,7 @@
 import { useGetMovieById } from "hooks";
 import { Text } from "./Reviews.styled";
+import PropTypes from "prop-types";
+
 export const Reviews = () => {
   const { reviews } = useGetMovieById();
   return (
@@ -20,4 +22,14 @@ export const Reviews = () => {
       )}
     </div>
   );
+};
+
+Reviews.propTypes = {
+  reviews: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      author: PropTypes.string,
+      content: PropTypes.string,
+    })
+  ),
 };

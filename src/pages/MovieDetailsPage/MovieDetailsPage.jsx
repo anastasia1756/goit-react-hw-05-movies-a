@@ -1,18 +1,16 @@
-import { Outlet, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useGetMovieById } from "hooks";
 import {
   Btn,
-  Link,
-  List,
   CardWrapper,
   InfoWrapper,
   GenresList,
   Overview,
-  Info,
 } from "./MovieDetailsPage.styled";
+import PropTypes from "prop-types";
+import { Info } from "components/Info";
 import { Loader } from "components/Loader";
 import { TiArrowBack } from "react-icons/ti";
-import { GiClick } from "react-icons/gi";
 import noMovie from "assets/no-movie.png";
 export const MovieDetailsPage = () => {
   const {
@@ -27,7 +25,7 @@ export const MovieDetailsPage = () => {
   const onBackBtnClick = () => {
     navigate(location?.state?.from?.location ?? "/");
   };
-  console.log(!poster_path);
+
   return (
     <>
       {loading && <Loader />}
@@ -60,17 +58,26 @@ export const MovieDetailsPage = () => {
             )}
           </InfoWrapper>
         </CardWrapper>
-        <Info>Additional information</Info>
-        <List>
-          <Link to={`/movies/${id}/cast`}>
-            Cast <GiClick />{" "}
-          </Link>
-          <Link to={`/movies/${id}/reviews`}>
-            Reviews <GiClick />
-          </Link>
-          <Outlet />
-        </List>
+        <Info id={id} />
       </div>
     </>
   );
+};
+
+MovieDetailsPage.propTypes = {
+  cast: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      profile_path: PropTypes.string,
+      name: PropTypes.string.isRequired,
+      character: PropTypes.string.isRequired,
+      gender: PropTypes.number,
+    })
+  ),
+  genres: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    })
+  ),
 };
