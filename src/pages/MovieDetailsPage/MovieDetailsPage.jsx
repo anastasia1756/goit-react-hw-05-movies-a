@@ -13,6 +13,7 @@ import {
 import { Loader } from "components/Loader";
 import { TiArrowBack } from "react-icons/ti";
 import { GiClick } from "react-icons/gi";
+import noMovie from "assets/no-movie.png";
 export const MovieDetailsPage = () => {
   const {
     movie: { release_date, poster_path, title, vote_average, overview, id },
@@ -26,7 +27,7 @@ export const MovieDetailsPage = () => {
   const onBackBtnClick = () => {
     navigate(location?.state?.from?.location ?? "/");
   };
-
+  console.log(!poster_path);
   return (
     <>
       {loading && <Loader />}
@@ -36,7 +37,10 @@ export const MovieDetailsPage = () => {
           {location?.state?.from?.label ?? "Go back home"}
         </Btn>
         <CardWrapper>
-          <img src={poster_path && `${base_url}${poster_path}`} alt={title} />
+          <img
+            src={poster_path ? `${base_url}${poster_path}` : noMovie}
+            alt={title}
+          />
           <InfoWrapper>
             <h2>
               {title}({year})

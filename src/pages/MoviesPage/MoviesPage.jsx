@@ -1,6 +1,14 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { Link, Wrapper, Input, Button, Form } from "./MoviesPage.styled";
+import {
+  Link,
+  Wrapper,
+  Input,
+  Button,
+  Form,
+  Img,
+  LinkWrapper,
+} from "./MoviesPage.styled";
 import { useNavigate, useLocation, useSearchParams } from "react-router-dom";
 import { getSearchedMovie } from "services";
 import { Loader } from "components/Loader";
@@ -18,6 +26,9 @@ export const MoviesPage = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
+
+  const base_url = "https://image.tmdb.org/t/p/w200";
+
   useEffect(() => {
     async function fetchMovie() {
       setLoading(true);
@@ -67,8 +78,8 @@ export const MoviesPage = () => {
       {loading && <Loader />}
       {movies && (
         <>
-          <div>
-            {movies.map(({ id, title }) => (
+          <LinkWrapper>
+            {movies.map(({ id, title, poster_path }) => (
               <div key={id}>
                 <Link
                   to={`/movies/${id}`}
@@ -76,10 +87,15 @@ export const MoviesPage = () => {
                 >
                   <MdLocalMovies />
                   {title}
+                  {poster_path && (
+                    <Img>
+                      <img src={`${base_url}${poster_path}`} alt={title} />
+                    </Img>
+                  )}
                 </Link>
               </div>
             ))}
-          </div>
+          </LinkWrapper>
         </>
       )}
       <Toaster />
