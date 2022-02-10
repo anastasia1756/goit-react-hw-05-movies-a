@@ -15,7 +15,7 @@ export const Cast = () => {
           {cast.map(({ id, profile_path, name, character, gender }) => (
             <Card key={id}>
               <ImgBx>
-                <ImgBx
+                <Img
                   src={
                     profile_path
                       ? `${base_url}${profile_path}`
