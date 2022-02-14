@@ -9,6 +9,9 @@ import {
   About,
   Genres,
   Votes,
+  OverviewWrapper,
+  Poster,
+  Title,
 } from "./MovieDetailsPage.styled";
 import PropTypes from "prop-types";
 import { Info } from "components/Info";
@@ -16,6 +19,7 @@ import { Loader } from "components/Loader";
 import { TiArrowBack } from "react-icons/ti";
 import noMovie from "assets/no-movie.png";
 import ReactTypingEffect from "react-typing-effect";
+import { useEffect } from "react/cjs/react.development";
 
 export const MovieDetailsPage = () => {
   const {
@@ -40,28 +44,30 @@ export const MovieDetailsPage = () => {
           {location?.state?.from?.label ?? "Go back home"}
         </Btn>
         <CardWrapper>
-          <img
+          <Poster
             src={poster_path ? `${base_url}${poster_path}` : noMovie}
             alt={title}
           />
           <InfoWrapper>
-            <h2>
+            <Title>
               {title}({year})
-            </h2>
+            </Title>
             <p>
               User score: <Votes>{vote_average * 10}%</Votes>
             </p>
-            <About>Overview:</About>
+            <OverviewWrapper>
+              <About>Overview:</About>
 
-            {overview && (
-              <Overview>
-                <ReactTypingEffect
-                  typingDelay={1000}
-                  speed={20}
-                  text={overview}
-                />
-              </Overview>
-            )}
+              {overview && (
+                <Overview>
+                  <ReactTypingEffect
+                    typingDelay={1000}
+                    speed={20}
+                    text={overview}
+                  />
+                </Overview>
+              )}
+            </OverviewWrapper>
             {genres.length !== 0 && (
               <>
                 <Genres>Genres:</Genres>

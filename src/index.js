@@ -4,7 +4,6 @@ import { ThemeProvider } from "styled-components";
 import { App } from "components/App";
 import { BrowserRouter } from "react-router-dom";
 import { GlobalStyle, theme } from "constants/index";
-
 import "./index.css";
 
 ReactDOM.render(

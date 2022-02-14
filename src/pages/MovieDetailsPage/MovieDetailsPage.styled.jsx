@@ -53,9 +53,29 @@ export const About = styled.p`
 `;
 export const Genres = styled.div`
   font-weight: 700;
+  font-size: 16px;
 `;
 export const Votes = styled.span`
   color: ${(props) => props.theme.colors.darkPurple};
   font-weight: 700;
   font-style: italic;
+`;
+export const OverviewWrapper = styled.div`
+  min-height: 106px;
+  max-height: 115px;
+
+  @media (max-width: 768px) {
+    min-height: 180px;
+    max-height: unset;
+  }
+`;
+export const Poster = styled.img`
+  @media (max-width: 768px) {
+    margin: 0 auto;
+  }
+`;
+export const Title = styled.h2`
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 `;
