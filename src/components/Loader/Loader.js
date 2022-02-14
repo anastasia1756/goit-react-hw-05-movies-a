@@ -9,6 +9,7 @@ export const Loader = () => {
       strokeWidth={5}
       color="#331333"
       secondaryColor="#aa27aa"
+      wrapperStyle={{ margin: 20 }}
     />
   );
 };
