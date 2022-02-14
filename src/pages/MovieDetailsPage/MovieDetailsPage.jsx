@@ -31,9 +31,15 @@ export const MovieDetailsPage = () => {
   const base_url = "https://image.tmdb.org/t/p/w200";
   const navigate = useNavigate();
   const location = useLocation();
+
   const year = release_date && release_date.slice(0, 4);
   const onBackBtnClick = () => {
-    navigate(location?.state?.from?.location ?? "/");
+    navigate(location?.state?.from?.location ?? "/") ||
+      navigate(
+        location?.state?.from?.location ??
+          location?.state?.from?.state?.from?.location ??
+          "/"
+      );
   };
 
   return (

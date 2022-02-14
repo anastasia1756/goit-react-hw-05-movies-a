@@ -27,7 +27,6 @@ export const MoviesPage = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
-
   const base_url = "https://image.tmdb.org/t/p/w200";
 
   useEffect(() => {
