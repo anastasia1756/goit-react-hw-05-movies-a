@@ -1,11 +1,12 @@
-import { useGetMovieById } from "hooks";
 import imageWoman from "assets/woman.png";
 import imageMan from "assets/man.png";
 import { Box, Card, ImgBx, Img, Details, Title, Desc } from "./Cast.styled";
 import PropTypes from "prop-types";
+import { useOutletContext } from "react-router-dom";
 
 export const Cast = () => {
-  const { cast } = useGetMovieById();
+  const [{ cast }] = useOutletContext();
+
   const base_url = "https://image.tmdb.org/t/p/w154";
   const castInfo = cast.length !== 0;
   return (

@@ -1,9 +1,10 @@
-import { useGetMovieById } from "hooks";
 import { Text, Author } from "./Reviews.styled";
 import PropTypes from "prop-types";
+import { useOutletContext } from "react-router-dom";
 
 export const Reviews = () => {
-  const { reviews } = useGetMovieById();
+  const [{ reviews }] = useOutletContext();
+
   const reviewsInfo = reviews.length !== 0;
   return (
     <div>

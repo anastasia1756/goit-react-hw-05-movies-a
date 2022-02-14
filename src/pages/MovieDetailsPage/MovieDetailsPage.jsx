@@ -19,13 +19,14 @@ import { Loader } from "components/Loader";
 import { TiArrowBack } from "react-icons/ti";
 import noMovie from "assets/no-movie.png";
 import ReactTypingEffect from "react-typing-effect";
-import { useEffect } from "react/cjs/react.development";
 
 export const MovieDetailsPage = () => {
   const {
     movie: { release_date, poster_path, title, vote_average, overview, id },
     genres,
     loading,
+    cast,
+    reviews,
   } = useGetMovieById();
   const base_url = "https://image.tmdb.org/t/p/w200";
   const navigate = useNavigate();
@@ -38,50 +39,52 @@ export const MovieDetailsPage = () => {
   return (
     <>
       {loading && <Loader />}
-      <div>
-        <Btn onClick={onBackBtnClick}>
-          <TiArrowBack />
-          {location?.state?.from?.label ?? "Go back home"}
-        </Btn>
-        <CardWrapper>
-          <Poster
-            src={poster_path ? `${base_url}${poster_path}` : noMovie}
-            alt={title}
-          />
-          <InfoWrapper>
-            <Title>
-              {title}({year})
-            </Title>
-            <p>
-              User score: <Votes>{vote_average * 10}%</Votes>
-            </p>
-            <OverviewWrapper>
-              <About>Overview:</About>
+      {id && (
+        <div>
+          <Btn onClick={onBackBtnClick}>
+            <TiArrowBack />
+            {location?.state?.from?.label ?? "Go back home"}
+          </Btn>
+          <CardWrapper>
+            <Poster
+              src={poster_path ? `${base_url}${poster_path}` : noMovie}
+              alt={title}
+            />
+            <InfoWrapper>
+              <Title>
+                {title}({year})
+              </Title>
+              <p>
+                User score: <Votes>{vote_average * 10}%</Votes>
+              </p>
+              <OverviewWrapper>
+                <About>Overview:</About>
 
-              {overview && (
-                <Overview>
-                  <ReactTypingEffect
-                    typingDelay={1000}
-                    speed={20}
-                    text={overview}
-                  />
-                </Overview>
+                {overview && (
+                  <Overview>
+                    <ReactTypingEffect
+                      typingDelay={1000}
+                      speed={20}
+                      text={overview}
+                    />
+                  </Overview>
+                )}
+              </OverviewWrapper>
+              {genres.length !== 0 && (
+                <>
+                  <Genres>Genres:</Genres>
+                  <GenresList>
+                    {genres.map(({ id, name }) => (
+                      <li key={id}>{name}</li>
+                    ))}
+                  </GenresList>
+                </>
               )}
-            </OverviewWrapper>
-            {genres.length !== 0 && (
-              <>
-                <Genres>Genres:</Genres>
-                <GenresList>
-                  {genres.map(({ id, name }) => (
-                    <li key={id}>{name}</li>
-                  ))}
-                </GenresList>
-              </>
-            )}
-          </InfoWrapper>
-        </CardWrapper>
-        <Info id={id} />
-      </div>
+            </InfoWrapper>
+          </CardWrapper>
+          <Info id={id} cast={cast} reviews={reviews} />
+        </div>
+      )}
     </>
   );
 };

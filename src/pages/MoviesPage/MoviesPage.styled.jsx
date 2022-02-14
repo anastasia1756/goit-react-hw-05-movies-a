@@ -50,7 +50,11 @@ export const Img = styled.span`
 
   ${Link}:hover & {
     visibility: visible;
-    transform: scale(0.5) rotate(-20deg);
+    transform: scale(0.8) rotate(-20deg);
+  }
+
+  @media (max-width: 768px) {
+    left: 230px;
   }
 `;
 export const Wrapper = styled.div`
@@ -66,8 +70,12 @@ export const Icon = styled(MdLocalMovies)`
 `;
 export const Form = styled.form`
   position: relative;
-  margin-bottom: ${(props) => props.theme.spacing(1)};
+  margin-top: ${(props) => props.theme.spacing(2)};
   max-width: ${(props) => props.theme.spacing(40)};
+
+  @media (max-width: 768px) {
+    max-width: ${(props) => props.theme.spacing(80)};
+  }
 `;
 export const Input = styled.input`
   animation: ${glow} 800ms ease-out infinite alternate;

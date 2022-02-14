@@ -3,7 +3,7 @@ import { AddInfo, Link, List } from "./Info.styled";
 import { GiClick } from "react-icons/gi";
 import PropTypes from "prop-types";
 
-export const Info = ({ id }) => {
+export const Info = ({ id, cast, reviews }) => {
   return (
     <>
       <AddInfo>Additional information</AddInfo>
@@ -14,7 +14,7 @@ export const Info = ({ id }) => {
         <Link to={`/movies/${id}/reviews`}>
           Reviews <GiClick />
         </Link>
-        <Outlet />
+        <Outlet context={[{ cast, reviews }]} />
       </List>
     </>
   );

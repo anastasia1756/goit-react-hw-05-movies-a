@@ -3,6 +3,7 @@ import { Layout } from "../Layout";
 import { Cast } from "components/Cast";
 import { Reviews } from "components/Reviews";
 import { useLazyLoader } from "hooks";
+
 export const App = () => {
   const HomePage = useLazyLoader("HomePage");
   const MoviesPage = useLazyLoader("MoviesPage");
