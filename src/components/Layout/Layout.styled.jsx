@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import bg from "assets/image.jpeg";
 
 export const Link = styled(NavLink)`
   margin-right: 10px;

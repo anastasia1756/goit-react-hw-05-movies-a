@@ -12,6 +12,7 @@ import {
   OverviewWrapper,
   Poster,
   Title,
+  Page,
 } from "./MovieDetailsPage.styled";
 import PropTypes from "prop-types";
 import { Info } from "components/Info";
@@ -46,7 +47,7 @@ export const MovieDetailsPage = () => {
     <>
       {loading && <Loader />}
       {id && (
-        <div>
+        <Page bg={`https://image.tmdb.org/t/p/w1280${poster_path}`}>
           <Btn onClick={onBackBtnClick}>
             <TiArrowBack />
             {location?.state?.from?.label ?? "Go back home"}
@@ -89,7 +90,7 @@ export const MovieDetailsPage = () => {
             </InfoWrapper>
           </CardWrapper>
           <Info id={id} cast={cast} reviews={reviews} />
-        </div>
+        </Page>
       )}
     </>
   );

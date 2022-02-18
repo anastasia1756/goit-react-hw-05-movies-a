@@ -13,9 +13,9 @@ export const Btn = styled.button`
   display: flex;
   padding: ${(props) => props.theme.spacing(3)};
   margin: 20px 0 10px;
-  color: ${(props) => props.theme.colors.purple};
+  color: ${(props) => props.theme.colors.pink};
   background-color: transparent;
-  border: 1px dotted ${(props) => props.theme.colors.purple};
+  border: 1px dotted ${(props) => props.theme.colors.pink};
 
   &:hover,
   &:focus {
@@ -26,7 +26,7 @@ export const Btn = styled.button`
 export const CardWrapper = styled.div`
   display: flex;
   padding: 15px 0;
-  border: 2px solid black;
+  border: 2px solid ${(props) => props.theme.colors.pink};
 
   @media (max-width: 768px) {
     display: block;
@@ -46,6 +46,7 @@ export const InfoWrapper = styled.div`
 export const Overview = styled.div`
   font-size: ${(props) => props.theme.spacing(3)};
   font-style: italic;
+  color: ${(props) => props.theme.colors.white};
 `;
 
 export const About = styled.p`
@@ -59,6 +60,9 @@ export const Votes = styled.span`
   color: ${(props) => props.theme.colors.darkPurple};
   font-weight: 700;
   font-style: italic;
+  background-color: ${(props) => props.theme.colors.white};
+  border-radius: 7px;
+  padding: ${(props) => props.theme.spacing(1)};
 `;
 export const OverviewWrapper = styled.div`
   min-height: 106px;
@@ -78,4 +82,10 @@ export const Title = styled.h2`
   @media (max-width: 768px) {
     text-align: center;
   }
+`;
+export const Page = styled.div`
+  color: ${(props) => props.theme.colors.pink};
+  /* background-image: ${(props) => `url(${props.bg})`};
+background-position: center;
+background-repeat: no-repeat; */
 `;

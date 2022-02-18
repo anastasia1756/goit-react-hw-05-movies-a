@@ -7,16 +7,27 @@ import ParticlesBg from "particles-bg";
 
 export const Layout = () => {
   const location = useLocation();
+  const heightHomeBg = window.innerWidth > 768 ? "500%" : "800%";
+  const heightMovieBg = window.innerWidth > 768 ? "150%" : "255%";
 
   return (
     <>
-      {location.pathname === "/" && (
+      {location.pathname === "/" ? (
         <ParticlesBg
           type="circle"
           bg={{
             position: "absolute",
             zIndex: -1,
-            height: 2000,
+            height: `${heightHomeBg}`,
+          }}
+        />
+      ) : (
+        <ParticlesBg
+          type="lines"
+          bg={{
+            position: "absolute",
+            zIndex: -1,
+            height: `${heightMovieBg}`,
           }}
         />
       )}
