@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 export const Description = styled.div`
   margin-left: ${(props) => props.theme.spacing(2)};
@@ -20,12 +21,12 @@ export const Items = styled.li`
     flex-basis: unset;
   }
 `;
-export const Card = styled.div`
+export const Card = styled(motion.div)`
   background-color: ${(props) => props.theme.colors.white};
   max-width: 200px;
   max-height: 360px;
 `;
-export const List = styled.ul`
+export const List = styled(motion.ul)`
   display: flex;
   flex-wrap: wrap;
   gap: 25px;

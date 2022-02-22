@@ -15,6 +15,7 @@ export const Card = styled.li`
   margin: 45px auto;
   border-radius: 4px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 10;
 
   &:after,
   &:before {
@@ -54,7 +55,11 @@ export const ImgBx = styled.div`
     bottom: 80px;
   }
 `;
-
+export const List = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+`;
 export const Img = styled.img`
   position: absolute;
   top: 0;

@@ -1,6 +1,15 @@
 import imageWoman from "assets/woman.png";
 import imageMan from "assets/man.png";
-import { Box, Card, ImgBx, Img, Details, Title, Desc } from "./Cast.styled";
+import {
+  Box,
+  Card,
+  ImgBx,
+  Img,
+  Details,
+  Title,
+  Desc,
+  List,
+} from "./Cast.styled";
 import PropTypes from "prop-types";
 import { useOutletContext } from "react-router-dom";
 
@@ -12,7 +21,7 @@ export const Cast = () => {
   return (
     <Box>
       {castInfo ? (
-        <ul>
+        <List>
           {cast.map(({ id, profile_path, name, character, gender }) => (
             <Card key={id}>
               <ImgBx>
@@ -36,7 +45,7 @@ export const Cast = () => {
               </Details>
             </Card>
           ))}
-        </ul>
+        </List>
       ) : (
         "We don't have information about cast for this movie"
       )}
